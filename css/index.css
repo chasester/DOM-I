@@ -297,3 +297,15 @@ footer {
         margin: 20px;
     }
 }
+
+.sticky
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 900px;
+    background-color: white;
+    opacity: 0.8;
+    padding: 20px;
+    transition: background-color 0.3s linear;
+}

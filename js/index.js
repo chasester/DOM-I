@@ -43,13 +43,17 @@ const siteContent = {
   //main content
   let content = ["features", "about", "services","product","vision"];
   [...document.querySelectorAll(".text-content")].map((x,i)=> x.classList.add(content[i]));
+  
   //contact
   let contact = ["address","phone","email"];
   [...document.querySelectorAll(".contact p")].map((x,i)=> x.classList.add(contact[i]));
+  //nav
+  document.querySelector("nav").classList.add("top-nav-bar");
 
 //nav
 document.getElementById("logo-img").setAttribute('src', siteContent["nav"]["img-src"]);
-[...document.querySelector("nav").children].map((x,i)=> x.textContent = siteContent["nav"]["nav-item-" + (i+1).toString()]);
+[...document.querySelector("header nav").children].map((x,i)=> x.textContent = siteContent["nav"]["nav-item-" + (i+1).toString()]);
+[...document.querySelector("header nav").children].map((x,i)=> x.style.color = 'green'); //i know this is so inefficent but im lazy
 
 //cta
 document.querySelector(".cta h1").textContent = siteContent["cta"]["h1"];
@@ -80,3 +84,14 @@ document.querySelector(".contact .email").textContent = siteContent["contact"]["
 
 //footer
 document.querySelector("footer p").textContent = siteContent["footer"]["copyright"];
+
+window.onscroll = () => stickyScroll();
+var navbar = document.querySelector(".top-nav-bar");
+
+var stickyStart = navbar.offsetTop+30;
+
+function stickyScroll()
+{
+  if(window.pageYOffset >= stickyStart) navbar.classList.add("sticky");
+  else navbar.classList.remove("sticky");
+}
