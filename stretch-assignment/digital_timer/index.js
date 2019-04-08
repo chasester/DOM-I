@@ -5,7 +5,9 @@ var ids = ["","msTens","msHundreds","secondOnes","secondTens"]
 function settime()
 {
     time += 10;
-    let strtime = time.toString().split("").reverse();
+    let strtime = formattime(time).toString().split("").reverse();
+    if(strtime.length > 5)strtime.splice(0,2);
+    if(strtime.length > 5) strtime.splice(0,2);
     for(let i = 1; i < ids.length; i++)
     {
         if(i >= strtime.length) document.querySelector(".digits #"+ids[i]).textContent = "0";
@@ -40,3 +42,9 @@ function resettime()
     but.setAttribute("onClick","");
     for(let i = 1; i < ids.length; i++) document.querySelector(".digits #"+ids[i]).textContent = "-";
 }
+
+function formattime(time)
+{
+    return time % 1000 + (Math.floor(time/1000) % 60)*1000+(Math.floor(time/60000) % 60)*100000+(Math.floor(time/3600000))*10000000;
+}
+resettime();
