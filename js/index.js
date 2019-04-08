@@ -50,6 +50,8 @@ const siteContent = {
   //nav
   document.querySelector("nav").classList.add("top-nav-bar");
 
+  //button
+  document.querySelector(".cta button").setAttribute('onclick', "clickEvent()");
 //nav
 document.getElementById("logo-img").setAttribute('src', siteContent["nav"]["img-src"]);
 [...document.querySelector("header nav").children].map((x,i)=> x.textContent = siteContent["nav"]["nav-item-" + (i+1).toString()]);
@@ -94,4 +96,8 @@ function stickyScroll()
 {
   if(window.pageYOffset >= stickyStart) navbar.classList.add("sticky");
   else navbar.classList.remove("sticky");
+}
+function clickEvent()
+{
+  document.querySelector(".cta h1").textContent = "Dogs are better than Cats!"
 }
